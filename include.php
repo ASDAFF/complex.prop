@@ -70,7 +70,7 @@ class CCustomTypeSimaiComplex
 					}
 				}
 			}			
-			if (!in_array($arr["USER_TYPE"], $GLOBALS["SIMAI_COMPLEXPROP_FORBIDDEN_UT"]))
+			if (!in_array($arr["USER_TYPE"], $GLOBALS["CP_COMPLEXPROP_FORBIDDEN_UT"]))
 				$props_[$arr["ID"]] = $arr;
 		}
 		foreach ($props_ as $p_id => $arr)
@@ -342,7 +342,7 @@ class CCustomTypeSimaiComplex
 				
 				foreach($PROP as $prop_code_ => $prop_fields_)
 				{
-					if ($prop_fields_["ID"] == $sprop && $prop_fields_["MULTIPLE"] != "Y" && !in_array($prop_fields_["USER_TYPE"], $GLOBALS["SIMAI_COMPLEXPROP_FORBIDDEN_UT"]))
+					if ($prop_fields_["ID"] == $sprop && $prop_fields_["MULTIPLE"] != "Y" && !in_array($prop_fields_["USER_TYPE"], $GLOBALS["CP_COMPLEXPROP_FORBIDDEN_UT"]))
 					{
 						$prop_fields__ = $prop_fields_;
 						
@@ -493,7 +493,7 @@ class CCustomTypeSimaiComplex
 					
 					foreach($PROP as $prop_code_ => $prop_fields_)
 					{
-						if ($prop_fields_["ID"] == $sprop && $prop_fields_["MULTIPLE"] == "Y" && !in_array($prop_fields_["USER_TYPE"], $GLOBALS["SIMAI_COMPLEXPROP_FORBIDDEN_UT"]))
+						if ($prop_fields_["ID"] == $sprop && $prop_fields_["MULTIPLE"] == "Y" && !in_array($prop_fields_["USER_TYPE"], $GLOBALS["CP_COMPLEXPROP_FORBIDDEN_UT"]))
 						{
 							$prop_fields__ = $prop_fields_;
 							
@@ -840,7 +840,7 @@ class CIBEditSimaiComplexProp
 			}		
 		}
 		
-		$GLOBALS["SIMAI_COMPLEXPROP_FORBIDDEN_UT"] = Array(
+		$GLOBALS["CP_COMPLEXPROP_FORBIDDEN_UT"] = Array(
 			"complex_prop",
 			"video",
 			"map_yandex",

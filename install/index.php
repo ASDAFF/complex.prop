@@ -9,7 +9,7 @@ $strPath2Lang = substr($strPath2Lang, 0, strlen($strPath2Lang) - 18);
 @include(GetLangFileName($strPath2Lang."/lang/", "/install/index.php"));
 IncludeModuleLangFile($strPath2Lang."/install/index.php");
 
-class complex_property extends CModule
+class complex_prop extends CModule
 {
     const MODULE_ID = 'complex.prop';
     var $MODULE_ID = 'complex.prop';
@@ -21,7 +21,7 @@ class complex_property extends CModule
     var $PARTNER_NAME;
     var $PARTNER_URI;
     
-    function complex_property()
+    function complex_prop()
 	{
 		$arModuleVersion = array();
 

@@ -5,10 +5,10 @@
 
 global $MESS;
 
-$MESS["SIMAI_MODULE_NOT_FOUND"]  = "Модуль &laquo;SIMAI: Составное свойство&raquo; не найден";
-$MESS["SIMAI_MODULE_INSTALLED"]  = "Модуль &laquo;SIMAI: Составное свойство&raquo; установлен";
-$MESS["SIMAI_MODULE_DEMO"]  = "Модуль &laquo;SIMAI: Составное свойство&raquo; модуль работает в демо-режиме (вы можете купить версию без ограничений в Маркетплейсе)";
-$MESS["SIMAI_MODULE_DEMO_EXPIRED"]  = "Модуль &laquo;SIMAI: Составное свойство&raquo; срок работы демо-режима модуля истек";
+$MESS["CP_MODULE_NOT_FOUND"]  = "Модуль &laquo;Составное свойство&raquo; не найден";
+$MESS["CP_MODULE_INSTALLED"]  = "Модуль &laquo;Составное свойство&raquo; установлен";
+$MESS["CP_MODULE_DEMO"]  = "Модуль &laquo;Составное свойство&raquo; модуль работает в демо-режиме (вы можете купить версию без ограничений в Маркетплейсе)";
+$MESS["CP_MODULE_DEMO_EXPIRED"]  = "Модуль &laquo;Составное свойство&raquo; срок работы демо-режима модуля истек";
 $MESS['CP_COMPLEX_PROP'] = 'Составное свойство';
 $MESS['CP_COMPLEX_PROP_LIST'] = 'составное свойство';
 $MESS['CP_SELECT_SUBPROPS'] = 'Выбор обычных свойств для составного свойства';

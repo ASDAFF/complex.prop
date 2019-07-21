@@ -5,6 +5,6 @@
 
 global $MESS;
 
-$MESS['CP_MODULE_NAME'] = 'SIMAI: Составное свойство';
+$MESS['CP_MODULE_NAME'] = 'Составное свойство';
 $MESS['CP_MODULE_DESCRIPTION'] = 'Возможность использовать составное свойство для инфоблока';
 ?>
