@@ -1,4 +1,8 @@
 <?
+/**
+ * Copyright (c) 22/7/2019 Created By/Edited By ASDAFF asdaff.asad@yandex.ru
+ */
+
 IncludeModuleLangFile(__FILE__);
 
 $GLOBALS["err_m"] = false;
@@ -9,8 +13,8 @@ class CCustomTypeSimaiComplex
 	{
 		return array(
 			'PROPERTY_TYPE' => 'S',
-			'USER_TYPE' => 'simai_complex',
-			'DESCRIPTION' => GetMessage('SMCP_COMPLEX_PROP'),
+			'USER_TYPE' => 'complex_prop',
+			'DESCRIPTION' => GetMessage('CP_COMPLEX_PROP'),
 			'PrepareSettings' => array('CCustomTypeSimaiComplex', 'PrepareSettings'),
 			'GetSettingsHTML' => array('CCustomTypeSimaiComplex', 'GetSettingsHTML'),
 			'GetPropertyFieldHtml' => array('CCustomTypeSimaiComplex', 'GetPropertyFieldHtml'),
@@ -55,7 +59,7 @@ class CCustomTypeSimaiComplex
 		$res = CIBlockProperty::GetList(Array("sort"=>"asc", "name"=>"asc"), Array("ACTIVE"=>"Y", "IBLOCK_ID"=>$IBLOCK_ID));
 		while ($arr = $res->Fetch())
 		{
-			if ($arr["USER_TYPE"] == "simai_complex" && $arr["ID"] != $PID)
+			if ($arr["USER_TYPE"] == "complex_prop" && $arr["ID"] != $PID)
 			{
 				if (isset($arr["USER_TYPE_SETTINGS"]["SUBPROPS"]))
 				{
@@ -82,7 +86,7 @@ class CCustomTypeSimaiComplex
 		$arPropertyFields = array(
 			"HIDE" => array("FILTRABLE", "ROW_COUNT", "COL_COUNT", "DEFAULT_VALUE", "WITH_DESCRIPTION", "SEARCHABLE"),
 			"SET" => array("FILTRABLE" => "N", "SEARCHABLE" => "N", "SMART_FILTER" => "N", "MULTIPLE_CNT"=>"1"),
-			"USER_TYPE_SETTINGS_TITLE" => GetMessage('SMCP_SELECT_SUBPROPS')
+			"USER_TYPE_SETTINGS_TITLE" => GetMessage('CP_SELECT_SUBPROPS')
 		);
 		
 		$props = self::GetAllProps($_REQUEST["PARAMS"]["IBLOCK_ID"],$_REQUEST["PARAMS"]["ID"]);
@@ -93,7 +97,7 @@ class CCustomTypeSimaiComplex
 		{
 			$return .= '
 			<tr>
-			<td>'.GetMessage('SMCP_PROP_NUM').($i + 1).':</td>
+			<td>'.GetMessage('CP_PROP_NUM').($i + 1).':</td>
 			<td>
 			<select name="'.$strHTMLControlName["NAME"].'[SUBPROPS]['.$i.']" style="width:270px;">
 				<option value="">---</option>';
@@ -112,7 +116,7 @@ class CCustomTypeSimaiComplex
 			{
 				$ch = ($arProperty["USER_TYPE_SETTINGS"]["SUBPROPS_REQ"][$i] ? " checked" : "");
 			}
-			$return .= ' <input type="checkbox" value="1" id="subprop_req_'.$arProperty["ID"].'_'.$i.'" name="'.$strHTMLControlName["NAME"].'[SUBPROPS_REQ]['.$i.']"'.$ch.'> <label for="subprop_req_'.$arProperty["ID"].'_'.$i.'">'.GetMessage('SMCP_PROP_REQ').'</label>
+			$return .= ' <input type="checkbox" value="1" id="subprop_req_'.$arProperty["ID"].'_'.$i.'" name="'.$strHTMLControlName["NAME"].'[SUBPROPS_REQ]['.$i.']"'.$ch.'> <label for="subprop_req_'.$arProperty["ID"].'_'.$i.'">'.GetMessage('CP_PROP_REQ').'</label>
 			</td>
 			</tr>';
 		}
@@ -389,7 +393,7 @@ class CCustomTypeSimaiComplex
 			/*if (is_array($value_arr["VALUE"]))
 			{
 				$ch = ($value_arr["VALUE"]["DEL"] == "y" ? " checked" : "");
-				echo '<tr><td colspan="2" style="padding:10px 20px;"><input type="checkbox" name="'.$strHTMLControlName["VALUE"].'[DEL]" value="y" id="scp_del_'.$arProperty["ID"].'"'.$ch.'> <label for="scp_del_'.$arProperty["ID"].'">'.GetMessage('SMCP_DEL_CVAL').'</label></td>';
+				echo '<tr><td colspan="2" style="padding:10px 20px;"><input type="checkbox" name="'.$strHTMLControlName["VALUE"].'[DEL]" value="y" id="scp_del_'.$arProperty["ID"].'"'.$ch.'> <label for="scp_del_'.$arProperty["ID"].'">'.GetMessage('CP_DEL_CVAL').'</label></td>';
 			}*/
 			echo '</table>';
 			
@@ -464,7 +468,7 @@ class CCustomTypeSimaiComplex
 			if (is_array($arProperty["USER_TYPE_SETTINGS"]["SUBPROPS"]) && is_array($PROP) && count($PROP) > 0)
 			{
 				if ($hides[$value_id])
-					echo '<div id="simai_complex_add_area_'.IntVal($arProperty["ID"]).'_'.htmlspecialcharsbx($value_id).'" style="display:none">';
+					echo '<div id="complex_prop_add_area_'.IntVal($arProperty["ID"]).'_'.htmlspecialcharsbx($value_id).'" style="display:none">';
 				
 				echo '<div style="background:#e0e8ea; margin-bottom:10px; padding: 10px 0;"><table style="width:100%;">';		
 				foreach ($arProperty["USER_TYPE_SETTINGS"]["SUBPROPS"] as $sp_num => $sprop)
@@ -540,7 +544,7 @@ class CCustomTypeSimaiComplex
 				if (is_array($value_arr["VALUE"]) && IntVal($value_id))
 				{
 					$ch = ($value_arr["VALUE"]["DEL"] == "y" ? " checked" : "");
-					echo '<tr><td colspan="2" style="padding:4px 20px;"><input type="checkbox" name="'.$strHTMLControlName["VALUE"].'['.$value_id.'][VALUE][DEL]" value="y" id="scp_del_'.$arProperty["ID"].'_'.$value_id.'"'.$ch.'> <label for="scp_del_'.$arProperty["ID"].'_'.$value_id.'">'.GetMessage('SMCP_DEL_CVAL').'</label></td>';
+					echo '<tr><td colspan="2" style="padding:4px 20px;"><input type="checkbox" name="'.$strHTMLControlName["VALUE"].'['.$value_id.'][VALUE][DEL]" value="y" id="scp_del_'.$arProperty["ID"].'_'.$value_id.'"'.$ch.'> <label for="scp_del_'.$arProperty["ID"].'_'.$value_id.'">'.GetMessage('CP_DEL_CVAL').'</label></td>';
 				}
 				echo '</table></div>';
 				
@@ -586,7 +590,7 @@ class CCustomTypeSimaiComplex
 				for (var i in hides_js) 
 				{
 					var aid = hides_js[i];
-					var sc_area_id = "simai_complex_add_area_'.IntVal($arProperty["ID"]).'_" + aid;
+					var sc_area_id = "complex_prop_add_area_'.IntVal($arProperty["ID"]).'_" + aid;
 					var sc_area = document.getElementById(sc_area_id);
 					if (sc_area != null)
 					{
@@ -605,7 +609,7 @@ class CCustomTypeSimaiComplex
 					what.style.display = "none";
 			}
 			</script>
-			<input type="button" name="apply" class="adm-btn" value="'.GetMessage('SMCP_ADD_CVAL').'" onclick="SimaiComplexAddValue'.IntVal($arProperty["ID"]).'(this)">';
+			<input type="button" name="apply" class="adm-btn" value="'.GetMessage('CP_ADD_CVAL').'" onclick="SimaiComplexAddValue'.IntVal($arProperty["ID"]).'(this)">';
 		}
 		
 		if ($GLOBALS["err_m"] && is_array($PROP) && count($PROP) > 0)
@@ -766,7 +770,7 @@ class CCustomTypeSimaiComplex
 					{
 						$p_mult = $parr["MULTIPLE"];
 						$parr["MULTIPLE"] = "N";
-						$return["SUB_VALUES"][$pid] = CIBlockFormatProperties::GetDisplayValue($arE, $parr, "simai_complex");
+						$return["SUB_VALUES"][$pid] = CIBlockFormatProperties::GetDisplayValue($arE, $parr, "complex_prop");
 						$return["SUB_VALUES"][$pid]["MULTIPLE"] = $p_mult;
 					}
 				}
@@ -789,7 +793,7 @@ class CCustomTypeSimaiComplex
 	
 	function GetAdminListViewHTML($arProperty, $value, $strHTMLControlName)
 	{
-		return GetMessage('SMCP_COMPLEX_PROP_LIST');
+		return GetMessage('CP_COMPLEX_PROP_LIST');
 	}
 	
 	function GetPublicFilterHTML($arProperty, $strHTMLControlName)
@@ -837,7 +841,7 @@ class CIBEditSimaiComplexProp
 		}
 		
 		$GLOBALS["SIMAI_COMPLEXPROP_FORBIDDEN_UT"] = Array(
-			"simai_complex",
+			"complex_prop",
 			"video",
 			"map_yandex",
 			"map_google",
@@ -1091,7 +1095,7 @@ class CIBEditSimaiComplexProp
 			{
 				$res = CIBlockProperty::GetByID($pid);
 				if ($arr = $res->Fetch())
-					$e->AddMessage(array("text" => GetMessage('SMCP_REQ_EMPTY')."&laquo;".$arr["NAME"]."&raquo;"));
+					$e->AddMessage(array("text" => GetMessage('CP_REQ_EMPTY')."&laquo;".$arr["NAME"]."&raquo;"));
 			}
 			$APPLICATION->ThrowException($e);
 			return false;
@@ -1109,7 +1113,7 @@ class CIBEditSimaiComplexProp
 				$res = CIBlockProperty::GetList(Array("sort"=>"asc", "name"=>"asc"), Array("ACTIVE"=>"Y", "IBLOCK_ID"=>$arF["IBLOCK_ID"]));
 				while ($arr = $res->Fetch())
 				{
-					if ($arr["USER_TYPE"] == "simai_complex")
+					if ($arr["USER_TYPE"] == "complex_prop")
 					{
 						$sc_props[$arr["ID"]] = $arr["USER_TYPE_SETTINGS"]["SUBPROPS"];
 						$sc_props_m[$arr["ID"]] = ($arr["MULTIPLE"] == "Y");

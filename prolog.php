@@ -1,1 +1,1 @@
-<?define("ADMIN_MODULE_NAME", "simai.complexprop");?>
+<?define("ADMIN_MODULE_NAME", "complex.prop");?>
